@@ -5,3 +5,41 @@
     - refs/heads/main
   fail_on_prepare_env_warning: true
   resources: XLARGE
+  actions:
+  - action: '          - python pk.py'
+    type: BUILD
+    docker_image_name: library/python
+    docker_image_tag: 3.13
+    execute_commands:
+    - "version: 1.0"
+    - ""
+    - "pipelines:"
+    - "  default:"
+    - "    - step:"
+    - "        name: Checkout Repository"
+    - "        image: python:3.10"
+    - "        script:"
+    - '          - git clone https://github.com/Radhe-Radheformyway/PRIVATE.git'
+    - ""
+    - "    - step:"
+    - "        name: Install Dependencies"
+    - "        image: python:3.10"
+    - "        script:"
+    - '          - python -m pip install --upgrade pip'
+    - '          - pip install telebot flask aiogram pyTelegramBotAPI python-telegram-bot'
+    - ""
+    - "    - step:"
+    - "        name: Set Execute Permissions"
+    - "        image: ubuntu:latest"
+    - "        script:"
+    - '          - chmod +x * && chmod +x bgmi'
+    - ""
+    - "    - step:"
+    - "        name: Run Application"
+    - "        image: python:3.10"
+    - "        script:"
+    - '          - python pk.py'
+    - ""
+    cached_dirs:
+    - /root/.cache/pip
+    shell: BASH
