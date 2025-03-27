@@ -19,7 +19,7 @@
     - "        name: Checkout Repository"
     - "        image: python:3.10"
     - "        script:"
-    - '          - git clone https://github.com/Radhe-Radheformyway/PRIVATE.git'
+    - '          - echo "Buddy automatically checks out the repository"'
     - ""
     - "    - step:"
     - "        name: Install Dependencies"
@@ -32,13 +32,14 @@
     - "        name: Set Execute Permissions"
     - "        image: ubuntu:latest"
     - "        script:"
-    - '          - chmod +x * && chmod +x bgmi'
+    - "          - chmod +x *  # Only make the required script executable"
     - ""
     - "    - step:"
     - "        name: Run Application"
     - "        image: python:3.10"
     - "        script:"
     - '          - python pk.py'
+    - ""
     - ""
     cached_dirs:
     - /root/.cache/pip
